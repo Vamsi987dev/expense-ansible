@@ -28,15 +28,10 @@
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
       dest: /tmp/frontend.zip
     
-  - name: create app directory
-    ansible.builtin.file:
-      path: /app
-      state: directory
-  
   - name: unzip or extract the code
     ansible.builtin.unarchive:
       src: /tmp/frontend.zip
-      dest: /app
+      dest: /usr/share/nginx/html
       remote_src: yes
 
   - name: copy expense conf
